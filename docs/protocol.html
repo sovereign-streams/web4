@@ -18,6 +18,7 @@
         <li><a href="index.html">Home</a></li>
         <li><a href="protocol.html" class="active">Protocol</a></li>
         <li><a href="use-cases.html">Use Cases</a></li>
+        <li><a href="economics.html">Economics</a></li>
         <li><a href="https://github.com/sovereign-streams/web4/blob/main/MANIFESTO.md">Manifesto</a></li>
         <li><a href="https://github.com/sovereign-streams">GitHub</a></li>
       </ul>
@@ -556,6 +557,62 @@ Consumer applies local PAE filtering</code></pre>
             <p>Consumers can query multiple providers with different disclosure levels. No provider sees the full picture.</p>
           </div>
         </div>
+      </div>
+
+      <!-- Transport Layer -->
+      <div class="schema-section">
+        <h3>Transport Layer</h3>
+        <p>SEP is transport-agnostic by design. It mandates what messages contain and how they&rsquo;re structured &mdash; not how they travel. The transport layer is pluggable.</p>
+
+        <div class="table-responsive">
+          <table class="field-table">
+            <thead>
+              <tr><th>Transport</th><th>Strengths</th><th>Use Case</th></tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>HTTP/HTTPS</strong></td>
+                <td>Universal, familiar, well-tooled</td>
+                <td>Primary transport, API-based exchanges</td>
+              </tr>
+              <tr>
+                <td><strong>Nostr relays</strong></td>
+                <td>Censorship-resistant, decentralized, zero-cost infrastructure</td>
+                <td>Real-time event distribution, backup transport</td>
+              </tr>
+              <tr>
+                <td><strong>WebSocket</strong></td>
+                <td>Low-latency, bidirectional</td>
+                <td>Live session updates, streaming metadata</td>
+              </tr>
+              <tr>
+                <td><strong>Future protocols</strong></td>
+                <td>TBD</td>
+                <td>Pluggable by design</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h4 style="font-size: 1rem; margin: 1.25rem 0 0.75rem;">Enrichment Envelopes as Nostr Events</h4>
+        <p style="color: var(--text-secondary); font-size: 0.95rem; margin-bottom: 1rem;">A SEP enrichment envelope can be published as a signed Nostr event (using a dedicated NIP kind such as 30078). This means:</p>
+
+        <div class="principles-grid" style="margin-top: 1rem;">
+          <div class="principle">
+            <h3>Zero-Cost Distribution</h3>
+            <p>Relays propagate events for free. No CDN costs for metadata delivery. Enrichment data floats across the relay network.</p>
+          </div>
+          <div class="principle">
+            <h3>Built-In Discovery</h3>
+            <p>Any Nostr client can subscribe to enrichment events by category, creator pubkey, or content type. Consumer agents gain another discovery channel.</p>
+          </div>
+          <div class="principle">
+            <h3>Censorship Resistance</h3>
+            <p>If a relay drops your events, dozens of others carry them. No single point of failure for metadata distribution.</p>
+          </div>
+        </div>
+
+        <p style="color: var(--text-secondary); font-size: 0.9rem; margin-top: 1.25rem;">HTTP remains the primary transport for rich provider-consumer sessions and negotiated exchanges. Nostr relays serve as the ambient distribution layer &mdash; complementary, not competing.</p>
       </div>
 
       <!-- Versioning -->

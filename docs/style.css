@@ -377,9 +377,14 @@ body {
   border-color: var(--sunrise-coral);
 }
 
+.arch-layer:nth-child(3) {
+  background: linear-gradient(to right, #fef2f2, #ffffff);
+}
+
 .arch-layer:last-child {
   border-radius: 0 0 var(--radius) var(--radius);
-  background: linear-gradient(to right, #fef2f2, #ffffff);
+  background: linear-gradient(to right, #f0fdf4, #ffffff);
+  border-color: #86efac;
 }
 
 .arch-layer-label {
@@ -551,6 +556,19 @@ body {
   font-size: 0.7rem;
   font-weight: 600;
   color: var(--text-muted);
+}
+
+/* ─── Responsive Tables ─── */
+
+.table-responsive {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  margin: 0 -0.5rem;
+  padding: 0 0.5rem;
+}
+
+.table-responsive .field-table {
+  min-width: 600px;
 }
 
 /* ─── Code Blocks ─── */

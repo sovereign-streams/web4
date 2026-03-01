@@ -178,6 +178,12 @@ No 30% platform tax. No algorithmic demonetization. No delisting at discretion. 
 │  SEP, AIP, open schemas, stablecoin rails,    │
 │  federated identity, verifiable credentials   │
 │  Built on Web3 infrastructure where useful    │
+├──────────────────────────────────────────────┤
+│           TRANSPORT LAYER                     │
+│  How messages move between parties            │
+│  HTTP (primary), Nostr relays (secondary),    │
+│  future transports pluggable                  │
+│  Transport-agnostic by design                 │
 └──────────────────────────────────────────────┘
 ```
 
@@ -459,6 +465,8 @@ Not everything from Web3 was wrong. Here's what carries forward — and what get
 | IPFS / Content addressing | Origin-agnostic content references in metadata |
 | Token standards (ERC-20) | Fungible value exchange between agents/services |
 | Open-source governance | Protocol evolution managed by contributor community |
+| Nostr relay architecture | Transport-agnostic secondary distribution layer for SEP |
+| Lightning micropayments | Complement to stablecoin payments for instant creator tips |
 
 ### Abandoned (With Respect)
 
@@ -485,7 +493,70 @@ Not everything from Web3 was wrong. Here's what carries forward — and what get
 
 ---
 
-## XI. The Line in the Sand
+## XI. Prior Art: Nostr and the Transport Layer
+
+### The Closest Existing Implementation
+
+While designing Web 4.0, we discovered that many of our architectural principles already exist in a working protocol: **Nostr** (Notes and Other Stuff Transmitted by Relays).
+
+Nostr is an open protocol created in 2020 by the pseudonymous developer "fiatjaf." It uses a radical "dumb server, smart client" architecture: relays are simple WebSocket servers that store and forward signed JSON events. Identity is a cryptographic key pair. Users sign their posts, publish to relays, and anyone subscribed can read them. No central server. No account to ban. No API key to revoke.
+
+Jack Dorsey (co-founder of Twitter) has put $10.25 million into Nostr development. The protocol has real users, real infrastructure, and a living specification process through NIPs (Nostr Implementation Possibilities).
+
+### What Nostr Got Right
+
+Nostr validates several core Web 4.0 design decisions:
+
+**Cryptographic identity** — Nostr's key pair identity model is exactly what we describe as "federated identity via agents." No "Sign in with Google." Your key IS your identity, portable across every relay and client.
+
+**Relay architecture** — A Nostr relay is functionally a lightweight Stream Provider. It receives signed events and distributes them to subscribers. The client is the consumer. The protocol defines the exchange format. This maps cleanly to SEP's provider/consumer model.
+
+**Lightning Zaps (NIP-57)** — Instant Bitcoin micropayments attached to any piece of content. Creator publishes. Fan zaps 500 sats ($0.25). Settlement is instant. No platform cut. This is the gratitude economy and creator-direct payment model we envision — already working.
+
+**Data Vending Machines (NIP-90)** — Agents that offer services (translation, AI processing, image generation) for payment. Client requests a task, DVM performs it, client pays. This is agent-mediated service intake on decentralized rails.
+
+**NIP spec process** — Nostr evolves through community-proposed NIPs — anyone can extend the protocol. This is the open, collaborative specification process that SEP should adopt.
+
+### What Nostr Hasn't Solved
+
+**No algorithm layer.** Nostr has no concept of BYOA. Feeds are chronological. No enrichment. No session arcs. No personal algorithm engine. This is the entire value proposition of Web 4.0's consumer-side innovation.
+
+**Bitcoin-only payments.** Zaps require a Lightning wallet and Bitcoin exposure. No CC-to-crypto Trojan horse. This maintains the friction barrier that blocked Web3 mainstream adoption.
+
+**No content enrichment.** Events carry whatever metadata the publisher includes. No standardized emotional tagging, category taxonomy, or session-fit scoring.
+
+**No guardrails infrastructure.** Freedom without structure. Spam and low-quality content are persistent problems.
+
+### How Web 4.0 Relates to Nostr
+
+Web 4.0 is not a replacement for Nostr. It is a **layer above and alongside it.**
+
+SEP is designed to be **transport-agnostic.** The primary transport is HTTP (familiar, universal, works everywhere). Nostr relays serve as a secondary transport — providing censorship resistance, decentralized distribution, and zero-infrastructure-cost relay networks.
+
+In practice:
+- A Good Vibes enrichment envelope can be published as both an HTTP-accessible SEP record AND a signed Nostr event
+- Consumer agents can subscribe to Nostr relays for real-time content discovery while also querying HTTP endpoints for richer negotiated exchanges
+- Lightning Zaps complement stablecoin payments — different tools for different scales and audiences
+- Nostr's NIP process informs SEP's specification evolution
+
+Nostr built the transport. Web 4.0 builds the intelligence on top.
+
+### The Transport-Agnostic Principle
+
+SEP does not mandate how messages travel. It mandates what messages contain and how they're structured. The transport layer is pluggable:
+
+| Transport | Strengths | Use Case |
+|-----------|-----------|----------|
+| HTTP/HTTPS | Universal, familiar, well-tooled | Primary transport, API-based exchanges |
+| Nostr relays | Censorship-resistant, decentralized, zero-cost infrastructure | Real-time event distribution, backup transport |
+| WebSocket | Low-latency, bidirectional | Live session updates, streaming metadata |
+| Future protocols | TBD | Pluggable by design |
+
+This means SEP is future-proof. If a better transport emerges, SEP adapts without breaking existing implementations.
+
+---
+
+## XII. The Line in the Sand
 
 Internet 2.0 shaped a generation's minds without their consent. Algorithms optimized for engagement created an attention extraction economy that profits from anxiety, outrage, and addiction. The platforms knew. They continued.
 
@@ -528,3 +599,9 @@ The match is Good Vibes. The fire is the protocol. The light is yours.
 - [Can You Publish a PWA to the App Store and Google Play? (2026)](https://www.mobiloud.com/blog/publishing-pwa-app-store)
 - [Apple Suggests PWAs to Bypass App Store Limitations](https://www.thetechherald.com/tech-news/progressive-web-apps-is-a-way-apple-suggests-app-developers-create-pwa-to-bypass-its-own-app-store-limitations/)
 - [Crypto Social Isn't Dead, It's Just Changing Hands (CoinDesk)](https://www.coindesk.com/opinion/2026/02/26/crypto-social-isn-t-dead-it-s-just-changing-hands)
+- [Nostr Protocol](https://nostr.com/)
+- [Nostr GitHub](https://github.com/nostr-protocol/nostr)
+- [NIP-57: Lightning Zaps](https://nips.nostr.com/57)
+- [NIP-90: Data Vending Machines](https://github.com/nostr-protocol/nips/blob/master/90.md)
+- [Nostr Technical Architecture](https://onnostr.substack.com/p/nostrs-technical-architecture-the)
+- [Nostr for Video Content Monetization](https://www.streamingmedia.com/Articles/ReadArticle.aspx?ArticleID=159495)

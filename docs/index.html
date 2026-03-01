@@ -18,6 +18,7 @@
         <li><a href="index.html" class="active">Home</a></li>
         <li><a href="protocol.html">Protocol</a></li>
         <li><a href="use-cases.html">Use Cases</a></li>
+        <li><a href="economics.html">Economics</a></li>
         <li><a href="https://github.com/sovereign-streams/web4/blob/main/MANIFESTO.md">Manifesto</a></li>
         <li><a href="https://github.com/sovereign-streams">GitHub</a></li>
       </ul>
@@ -80,7 +81,7 @@
   <section class="section section-alt">
     <div class="section-inner">
       <div class="section-header">
-        <h2>Three-Layer Architecture</h2>
+        <h2>Four-Layer Architecture</h2>
         <p>The user sees Web 2.0. The settlement runs Web 3.0. The orchestration is Web 4.0.</p>
       </div>
 
@@ -99,6 +100,11 @@
           <div class="arch-layer-label">Protocol Layer</div>
           <h3>What makes it sovereign</h3>
           <p>SEP, AIP, open schemas, stablecoin rails, federated identity, verifiable credentials.</p>
+        </div>
+        <div class="arch-layer">
+          <div class="arch-layer-label">Transport Layer</div>
+          <h3>How messages move</h3>
+          <p>HTTP (primary), Nostr relays (secondary), future transports pluggable. Transport-agnostic by design.</p>
         </div>
       </div>
     </div>
@@ -229,8 +235,31 @@
     </div>
   </section>
 
+  <!-- Economics -->
+  <section class="section">
+    <div class="section-inner">
+      <div class="card" style="max-width: 700px; margin: 0 auto; border-color: var(--sunrise-gold); box-shadow: 0 4px 16px rgba(245, 158, 11, 0.1); text-align: center; padding: 2.5rem;">
+        <h2 style="font-size: 1.5rem; margin-bottom: 0.5rem;">The Tokenized Value Layer</h2>
+        <p style="color: var(--text-secondary); margin-bottom: 1.5rem;">Agent-mediated micropayments. Multi-rail stablecoin settlement. Middle-man deflation economics. The financial infrastructure that makes sovereignty sustainable.</p>
+        <a href="economics.html" class="btn btn-primary">Explore the Economics</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Prior Art -->
+  <section class="section section-alt">
+    <div class="section-inner">
+      <div style="max-width: 700px; margin: 0 auto;">
+        <h2 style="font-size: 1.4rem; margin-bottom: 1rem;">Standing on Shoulders</h2>
+        <p style="color: var(--text-secondary); font-size: 0.95rem; line-height: 1.7;">
+          Many of Web 4.0&rsquo;s architectural principles already exist in <a href="https://nostr.com/" style="color: var(--sunrise-amber); text-decoration: none; font-weight: 600;">Nostr</a> &mdash; cryptographic identity, relay-based distribution, Lightning micropayments, and community-driven specification through NIPs. Nostr got identity, relays, and creator-direct payments right. Web 4.0 builds the layer Nostr doesn&rsquo;t have: user-owned algorithms, semantic enrichment, session intelligence, and guardrails infrastructure. We use Nostr relays as a secondary transport for SEP &mdash; not replacing it, but building intelligence on top of what it proved.
+        </p>
+      </div>
+    </div>
+  </section>
+
   <!-- CTA -->
-  <section class="section section-alt" style="text-align: center;">
+  <section class="section" style="text-align: center;">
     <div class="section-inner">
       <h2 style="font-size: 1.85rem; margin-bottom: 0.75rem;">The Match Is Lit</h2>
       <p style="color: var(--text-secondary); max-width: 550px; margin: 0 auto 1.5rem; font-size: 1.05rem;">You don't light the match with a manifesto. You light it with a product so good people can't stop using it. The manifesto gives the early adopters language.</p>
